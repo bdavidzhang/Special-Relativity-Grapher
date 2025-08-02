@@ -1,10 +1,43 @@
+Metadata-Version: 2.4
+Name: special-relativity-grapher
+Version: 0.1.2
+Summary: A Python library for visualizing special relativity effects
+Author: Albert Han, Stephen He
+Author-email: David Zhang <davidzhang@example.com>
+License: MIT
+Project-URL: Homepage, https://github.com/bdavidzhang/Special-Relativity-Grapher
+Project-URL: Repository, https://github.com/bdavidzhang/Special-Relativity-Grapher
+Project-URL: Documentation, https://special-relativity-grapher.readthedocs.io
+Project-URL: Bug Tracker, https://github.com/bdavidzhang/Special-Relativity-Grapher/issues
+Keywords: physics,relativity,visualization,education
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Scientific/Engineering :: Physics
+Classifier: Topic :: Education
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Provides-Extra: dev
+Requires-Dist: pytest>=6.0; extra == "dev"
+Requires-Dist: pytest-cov>=2.0; extra == "dev"
+Requires-Dist: black>=22.0; extra == "dev"
+Requires-Dist: flake8>=4.0; extra == "dev"
+Requires-Dist: mypy>=0.900; extra == "dev"
+Provides-Extra: docs
+Requires-Dist: sphinx>=4.0; extra == "docs"
+Requires-Dist: sphinx-rtd-theme>=1.0; extra == "docs"
+Dynamic: license-file
+
 # Special Relativity Grapher
-
-To download, use 
-```bash 
-pip install special-relativity-grapher==0.1.2
-```
-
 
 A Python library for visualizing special relativity effects including time dilation, length contraction, loss of simultaneity, and classic paradoxes.
 

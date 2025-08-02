@@ -4,15 +4,15 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "special-relativity-grapher"
-version = "0.1.0"
+version = "0.1.2"
 description = "A Python library for visualizing special relativity effects"
 readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}
 authors = [
+    {name = "David Zhang", email = "davzhang77@gmail.com"},
     {name = "Albert Han"},
-    {name = "Stephen He"}, 
-    {name = "David Zhang", email = "davidzhang@example.com"}
+    {name = "Stephen He"}
 ]
 keywords = ["physics", "relativity", "visualization", "education"]
 classifiers = [
@@ -29,9 +29,8 @@ classifiers = [
     "Topic :: Education",
 ]
 dependencies = [
-    "numpy>=1.20.0",
-    "matplotlib>=3.5.0",
-    "ipython>=7.0.0"
+    "numpy",
+    "matplotlib",
 ]
 
 [project.optional-dependencies]

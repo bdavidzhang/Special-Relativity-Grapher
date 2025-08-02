@@ -43,7 +43,7 @@ def test_dependencies():
     """Test that required dependencies are available."""
     print("\nTesting dependencies...")
     
-    required_packages = ['numpy', 'matplotlib', 'IPython']
+    required_packages = ['numpy', 'matplotlib']
     missing_packages = []
     
     for package in required_packages:
