@@ -1,17 +1,21 @@
-# Special-Relativity-Grapher
-# Special-Relativity-Grapher
+# Special Relativity Grapher
 
+A Python library for visualizing special relativity effects including time dilation, length contraction, loss of simultaneity, and classic paradoxes.
 
+## Authors
+- Albert Han
+- Stephen He  
+- David Zhang
 
-**for the interactive tutorial, see `tutorial.inpynb`**
+**For the interactive tutorial, see `tutorial.ipynb`**
 
+## Features
 
-
-
-
-By: Albert Han, Stephen He, and David Zhang
-
-
+- **Core Physics Simulations**: Accurate relativistic transformations and coordinate systems
+- **Interactive Visualizations**: Animated demonstrations of relativistic effects
+- **Classic Paradoxes**: Implementations of the pole-in-barn paradox and twin paradox
+- **Minkowski Diagrams**: 3D spacetime visualizations
+- **Educational Examples**: Ready-to-use demonstrations for teaching special relativity
 
 This project provides a Python-based simulation environment to visualize fundamental concepts and classic paradoxes of special relativity. Using a custom `Simulation` class, it allows for the creation of objects in different inertial frames, transforms them to a ground frame, and animates their interactions. The simulations are primarily in 2D to simplify visualization while still being able to effectively demonstrate relativistic effects. Natural units are used, where the speed of light, c, is equal to 1.
 
@@ -857,4 +861,131 @@ We will track how old the twins are by having each twin send uniformly spaced si
 
 
 
-As we can see, since the twin on Earth sends more signals, the one on Earth is older\! The key is that the spaceship frame is not an inertial frame, since the spaceship turns around.
+As we can see, since the twin on Earth sends more signals, the one on Earth is older! The key is that the spaceship frame is not an inertial frame, since the spaceship turns around.
+
+---
+
+## Library Usage
+
+This project is now organized as a Python library. Here's how to use it:
+
+### Installation
+
+#### Development Installation
+```bash
+git clone https://github.com/bdavidzhang/Special-Relativity-Grapher.git
+cd Special-Relativity-Grapher
+pip install -e .
+```
+
+#### Development Dependencies
+```bash
+pip install -e ".[dev]"
+```
+
+### Quick Start
+
+```python
+from special_relativity_grapher import Simulation
+from special_relativity_grapher.visualization import RelatavisticAnimation
+from special_relativity_grapher.utils import trueCond
+
+# Create a simulation
+sim = Simulation()
+
+# Add a moving rod
+sim.addLine([0, 0], 5, [0, 0], [-0.8, 0], True, 0)
+
+# Run simulation in ground frame
+times, objects = sim.runSimulation([0, 0], 0.1, 0, 10, trueCond)
+
+# Create animation
+plot_limits = [-5, 10, -2, 3]
+animation = RelatavisticAnimation([objects], plot_limits, "Length Contraction Demo")
+
+# Save as gif
+animation.save('length_contraction.gif', writer='pillow', fps=30)
+```
+
+### Examples
+
+The library includes several complete examples demonstrating key relativistic effects:
+
+#### Time Dilation
+```python
+from examples.time_dilation import time_dilation_demo, light_clock_demo
+
+# Standard time dilation with moving clocks
+train_ani, ground_ani = time_dilation_demo()
+
+# Light clock demonstration  
+light_train_ani, light_ground_ani = light_clock_demo()
+```
+
+#### Length Contraction
+```python
+from examples.length_contraction import length_contraction_demo
+
+# Rods at different velocities
+ground_ani, moving_ani = length_contraction_demo()
+```
+
+#### Classic Paradoxes
+```python
+from examples.pole_in_barn import pole_in_barn_demo
+from examples.twin_paradox import twin_paradox_demo
+
+# Pole-in-barn paradox
+ground_ani, pole_ani = pole_in_barn_demo()
+
+# Twin paradox
+earth_ani, spaceship_ani = twin_paradox_demo()
+```
+
+#### Loss of Simultaneity
+```python
+from examples.simultaneity import simultaneity_demo
+
+# Events simultaneous in one frame but not another
+ground_ani, moving_x_ani, moving_diag_ani = simultaneity_demo()
+```
+
+### Core API
+
+#### Simulation Class
+The main simulation class for managing objects, events, and reference frames.
+
+**Key Methods:**
+- `addLine(startPt, L, velocity, frameVelo, doX, t)`: Add a line segment
+- `addTrain(bottomLeft, L, H, velocity, frameVelo, t)`: Add a rectangular object
+- `addEvent(event, fVelo)`: Add a spacetime event
+- `runSimulation(frameVelocity, dT, Ts, Tend, condition)`: Execute the simulation
+
+#### Transformation Functions
+- `getGamma(Vf)`: Calculate Lorentz gamma factor
+- `lorentzTranformPt(fourVec, V)`: Apply Lorentz transformation to a 4-vector
+- `addVelocities(objectVelo, Vf1, Vf2)`: Relativistic velocity addition
+
+#### Visualization Functions
+- `RelatavisticAnimation(simulations, plotLimits, title)`: Create animated visualizations
+- `Minkowski(frame2Velo, frame1Objects, frame2Objects)`: Generate 3D Minkowski diagrams
+
+### Testing
+
+Run the test suite:
+```bash
+pytest tests/
+```
+
+### Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests for new functionality
+5. Run the test suite
+6. Create a Pull Request
+
+## License
+
+This project is licensed under the MIT License.
